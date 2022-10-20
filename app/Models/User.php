@@ -19,26 +19,20 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
         'password',
+        'group_id',
+        'person_id'
     ];
 
     /**
      * The attributes that should be hidden for serialization.
+     * ここに書いたカラムは常に取得対象外となる
+     * makeVisibleメソッドで意図的に取得はできる
      *
-     * @var array<int, string>
+     * @var array<string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        // 'password'
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 }
