@@ -36,12 +36,6 @@
 
         <input type="submit" value="登録">
     </form>
-
-    {{-- ユーザー一覧（ログイン状態時） --}}
-    {{-- TODO: ログイン状態ならばul以下を表示する --}}
-    <ul>
-        <li></li>
-    </ul>
 </body>
 
 </html>

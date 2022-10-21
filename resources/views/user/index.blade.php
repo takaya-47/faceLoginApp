@@ -11,5 +11,13 @@
     <p>顔と合言葉でログインしよう！</p>
     <a href="{{ url('/users/create') }}">新規登録</a>
     <a href="{{ url('#') }}">ログイン</a>
+
+    {{-- ユーザー一覧（ログイン状態時） --}}
+    {{-- TODO: ログイン状態ならばul以下を表示する --}}
+    <ul>
+        @foreach ($users as $user)
+            <li>{{$user}}</li>
+        @endforeach
+    </ul>
 </body>
 </html>
