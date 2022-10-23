@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::fetch_all_with_groups();
         return view('user/index', compact('users'));
     }
 

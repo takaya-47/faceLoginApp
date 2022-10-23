@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -35,4 +36,11 @@ class User extends Authenticatable
         // 'password'
     ];
 
+    public static function fetch_all_with_groups()
+    {
+        return DB::table('users')
+                ->join('groups', 'groups.id', '=', 'users.group_id')
+                ->select('*')
+                ->get();
+    }
 }
