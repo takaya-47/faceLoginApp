@@ -16,7 +16,8 @@
     {{-- TODO: ログイン状態ならばul以下を表示する --}}
     <ul>
         @foreach ($users as $user)
-            <li>{{$user}}</li>
+            <li>{{$user->name}}</li>
+            <li>{{$user->group_name}}</li>
         @endforeach
     </ul>
 </body>
