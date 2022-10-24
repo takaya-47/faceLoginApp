@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Group;
 use App\Http\Requests\UserRequest;
+use App\Consts\AppConst;
 
 class UserController extends Controller
 {
@@ -49,7 +50,8 @@ class UserController extends Controller
             [
                 'name'     => $validated_request['name'],
                 'password' => $validated_request['password'],
-                'group_id' => $group->id
+                'group_id' => $group->id,
+                'face_registration_flg' => AppConst::ON_FLG_OFF
             ]
         );
 
