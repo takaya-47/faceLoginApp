@@ -8,10 +8,22 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
+use \Illuminate\Support\Collection;
+use \Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+     * リレーション
+     *
+     * @return HasOne
+     */
+    public function group(): HasOne
+    {
+        return $this->hasOne(Group::class);
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -36,7 +48,15 @@ class User extends Authenticatable
         // 'password'
     ];
 
-    public static function fetch_all_with_groups()
+    // *******************************
+    // データベースの検索メソッド
+    // *******************************
+    /**
+     * すべてのユーザーをグループと紐付けて取得します
+     *
+     * @return Collection
+     */
+    public static function fetch_all_with_groups(): Collection
     {
         return DB::table('users')
                 ->join('groups', 'groups.id', '=', 'users.group_id')
