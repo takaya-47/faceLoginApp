@@ -18,6 +18,9 @@
         @foreach ($users as $user)
             <li>{{$user->name}}</li>
             <li>{{$user->group_name}}</li>
+            @if ($user->face_registration_flg === App\Consts\AppConst::ON_FLG_OFF)
+                <li><a href="#">顔登録</a></li>
+            @endif
         @endforeach
     </ul>
 </body>
