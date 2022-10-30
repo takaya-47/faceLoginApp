@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,5 @@ Route::get('/', function () {
 
 // index, create, store, show, edit, update, destroy全てを定義
 Route::resource('users', UserController::class);
+Route::resource('faces', UserController::class);
+
