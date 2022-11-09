@@ -21,5 +21,4 @@ Route::get('/', function () {
 
 // index, create, store, show, edit, update, destroy全てを定義
 Route::resource('users', UserController::class);
-Route::resource('faces', UserController::class);
-
+Route::resource('users.faces', FaceController::class);

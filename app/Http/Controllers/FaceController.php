@@ -23,7 +23,7 @@ class FaceController extends Controller
      */
     public function create()
     {
-        //
+        return view('face/create');
     }
 
     /**

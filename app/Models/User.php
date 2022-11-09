@@ -16,13 +16,23 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
-     * リレーション
+     * リレーション（ユーザーはグループを１つ持つ）
      *
      * @return HasOne
      */
     public function group(): HasOne
     {
         return $this->hasOne(Group::class);
+    }
+
+    /**
+     * リレーション（ユーザーはグループを１つ持つ）
+     *
+     * @return HasOne
+     */
+    public function face(): HasOne
+    {
+        return $this->hasOne(Face::class);
     }
 
     /**
@@ -59,7 +69,7 @@ class User extends Authenticatable
     public static function fetch_all_with_groups(): Collection
     {
         return DB::table('users')
-                ->join('groups', 'groups.id', '=', 'users.group_id')
+                ->join('groups', 'groups.user_id', '=', 'users.id')
                 ->select('*')
                 ->get();
     }
